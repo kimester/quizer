@@ -32,3 +32,13 @@ section {
     min-height:70vh;
     display: flex;
 }
+
+#score-input {
+    flex-direction:column;
+    align-items: center;
+}
+
+#high-scores {
+    flex-direction:column;
+    align-items:center
+}

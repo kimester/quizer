@@ -4,8 +4,9 @@ var displayTimeEl = document.getElementById("displayTime");
 var timer = 10;
 var timerInterval;
 var QAScreenEl = document.getElementById("QAScreen");
-var scoreboard = document.getElementById("scoreboard");
-var points = 0;
+var score = document.getElementById("score");
+// var points = 0;
+var score = document.getElementById("score");
 var quizQuestions = [
   {
     question: "DOM stands for Document Object Model?",
@@ -103,12 +104,12 @@ function RWAns() {
 
   if (rightAnswer === buttonClicked) {
     document.getElementById("RW").textContent = "Right Answer";
-    points = points + 2;
-    console.log(points);
+    score = score + 2;
+    console.log(score);
   } else {
     document.getElementById("RW").textContent = "Wrong Answer";
     points = points - 2;
-    console.log(points);
+    console.log(score);
   }
   //increase the index count by 1
   index = index + 1;
@@ -148,19 +149,27 @@ function RWAns() {
 
 startBtn.addEventListener("click", startQuiz);
 
-var scores = JSON.parse(localStorage.getItem("scores")) || [];
 
-scores.forEach((score) => {
-  var newli = document.createElement("li");
-  newli.textContent = `${score.init} : ${score.score}`;
-  document.querySelector("ol").append(newli);
-});
+var scores = JSON.parse(localStorage.getItem("scores"))||[];
+
+scores.forEach(score=>{
+    var newli = document.createElement("li");
+    newli.textContent = `${score.init} : ${score.score}`
+    document.querySelector("ol").append(newli)
+})
+
+// scores.forEach((score) => {
+//   var points = document.createElement("points");
+//   newli.textContent = `${score.init} : ${score.score}`;
+//   document.querySelector("ol").append(newli);
+// });
 
 function endGame() {
   startBtn.style.display = "block";
   startBtn.textContent = "Try Again?";
   timer = 10;
 }
+
 //DOM stands for Document Object Model
 //true
 //false
