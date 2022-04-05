@@ -5,6 +5,7 @@ var timer = 10;
 var timerInterval;
 var QAScreenEl = document.getElementById("QAScreen");
 var scoreboard = document.getElementById("scoreboard");
+var points = 0;
 var quizQuestions = [
   {
     question: "DOM stands for Document Object Model?",
@@ -36,7 +37,7 @@ function startQuiz() {
 
   //Start clock
   timerInterval = setInterval(function () {
-    timer = timer - 1;
+    timer--;
 
     //Show time on the span
     displayTimeEl.textContent = timer;
@@ -46,15 +47,17 @@ function startQuiz() {
       clearInterval(timerInterval);
       QAScreenEl.style.display = "none";
       alert("Time's up!! ");
-      startBtn.style.display = "block";
-      startBtn.textContent = "Try Again?";
-      timer = 10;
+      endGame();
     }
   }, 1000);
   //Unhide the QA section
   QAScreenEl.style.display = "block";
   //display Q and Options
-  showQA();
+  if (index <= 1) {
+    showQA();
+  } else {
+    endGame();
+  }
 }
 
 function showQA() {
@@ -62,6 +65,7 @@ function showQA() {
   document.getElementById("q1").textContent = currentQ;
   console.log(quizQuestions[index], index);
   //show the options
+  console.log(index);
   document.getElementById("01").textContent = quizQuestions[index].options[0];
   document.getElementById("02").textContent = quizQuestions[index].options[1];
   //add event listener
@@ -70,7 +74,7 @@ function showQA() {
   //set it to blank after 2 seconds
   setInterval(function () {
     document.getElementById("RW").textContent = "";
-  },2000);
+  }, 2000);
 
   // var currentQ = quizQuestions[index].question;
   // document.getElementById("q3").textContent = currentQ;
@@ -99,13 +103,21 @@ function RWAns() {
 
   if (rightAnswer === buttonClicked) {
     document.getElementById("RW").textContent = "Right Answer";
+    points = points + 2;
+    console.log(points);
   } else {
     document.getElementById("RW").textContent = "Wrong Answer";
+    points = points - 2;
+    console.log(points);
   }
   //increase the index count by 1
   index = index + 1;
   //show the next question
-  showQA();
+  if (index <= 1) {
+    showQA();
+  } else {
+    endGame();
+  }
 }
 
 // function endGame() {
@@ -136,14 +148,19 @@ function RWAns() {
 
 startBtn.addEventListener("click", startQuiz);
 
+var scores = JSON.parse(localStorage.getItem("scores")) || [];
 
-var scores = JSON.parse(localStorage.getItem("scores"))||[];
+scores.forEach((score) => {
+  var newli = document.createElement("li");
+  newli.textContent = `${score.init} : ${score.score}`;
+  document.querySelector("ol").append(newli);
+});
 
-scores.forEach(score=>{
-    var newli = document.createElement("li");
-    newli.textContent = `${score.init} : ${score.score}`
-    document.querySelector("ol").append(newli)
-})
+function endGame() {
+  startBtn.style.display = "block";
+  startBtn.textContent = "Try Again?";
+  timer = 10;
+}
 //DOM stands for Document Object Model
 //true
 //false
