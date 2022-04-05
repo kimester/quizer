@@ -7,4 +7,5 @@
 - 
 # Topics that the quiz will cover  
 - Javascript
- 
+- CSS 
+- HTML

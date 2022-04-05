@@ -1,21 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <h1> Java Script Speed Test</h1>
-    <button id = "start btn"> Start Quiz</button>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Java Script Speed Test</h1>
+      
+    </header>
     <div>
-        <h4>Clock</h4>
-        <span id ="displayTime"> </span> seconds remaining
-    </div>
+        <h2>Clock</h2>
+        <span id="displayTime"> </span> seconds remaining
+      </div>
+    <section id="startQuiz">
+        <button id="start-btn">Start Quiz</button>
 
+    </section>
+    <section id="QAScreen" style="display:none;">
+        <h1 id = "q1"> Question display here </h1>
+        <button id = "01">Option One</button>
+        <button id = "02">Option Two</button>
+        <hr />
+        <span id = "RW"></span>
+    </section>
+    <!-- <section id="QAScreen" style="display:none;">
+        <h1 id = "q3"> Question display here </h1>
+        <button id = "abc">Option One</button>
+        <button id = "bca">Option Two</button>
+        <button id = "cab">Option Three</button>
+        <hr />
+        <span id = "a"></span>
+    </section> -->
 
+    <section id="scores" style="display:none;">
+        <h1> Game Over!! </h1>
+       <input placeholder="Please enter initials" /> 
+        <button>Submit Score</button>
+    </section>
+    <section id="high-scores">
+      <h1>high scores</h1>
+      <ol id="high-scores"></ol>
+  </section>
+    <!-- high score board -->
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
