@@ -31,6 +31,7 @@ section {
     border-radius: 50px ;
     min-height:70vh;
     display: flex;
+    text-align: center;
 }
 
 #score-input {

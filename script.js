@@ -5,8 +5,8 @@ var timer = 10;
 var timerInterval;
 var QAScreenEl = document.getElementById("QAScreen");
 var score = document.getElementById("score");
-// var points = 0;
-var score = document.getElementById("score");
+var points = 0;
+// var score = document.getElementById("score");
 var quizQuestions = [
   {
     question: "DOM stands for Document Object Model?",
@@ -18,15 +18,7 @@ var quizQuestions = [
     options: ["True", "False"],
     answer: "False",
   },
-  // {
-  //   question: "Boolean values are...??",
-  //   options: [
-  //     "true/ false statements",
-  //     "only true if both the values given to it are true",
-  //     "the only values in JS that is not equal to it self",
-  //   ],
-  //   answer: "true/false statements",
-  // },
+
 ];
 var index = 0;
 
@@ -108,7 +100,7 @@ function RWAns() {
     console.log(score);
   } else {
     document.getElementById("RW").textContent = "Wrong Answer";
-    points = points - 2;
+    score = score - 2;
     console.log(score);
   }
   //increase the index count by 1
@@ -150,13 +142,7 @@ function RWAns() {
 startBtn.addEventListener("click", startQuiz);
 
 
-var scores = JSON.parse(localStorage.getItem("scores"))||[];
 
-scores.forEach(score=>{
-    var newli = document.createElement("li");
-    newli.textContent = `${score.init} : ${score.score}`
-    document.querySelector("ol").append(newli)
-})
 
 // scores.forEach((score) => {
 //   var points = document.createElement("points");
@@ -168,8 +154,16 @@ function endGame() {
   startBtn.style.display = "block";
   startBtn.textContent = "Try Again?";
   timer = 10;
+
 }
 
+var scores = JSON.parse(localStorage.getItem("score"))||[];
+
+scores.forEach(score=>{
+    var newli = document.createElement("li");
+    newli.textContent = `${score.init} : ${score.score}`
+    document.querySelector("ol").append(newli)
+})
 //DOM stands for Document Object Model
 //true
 //false
