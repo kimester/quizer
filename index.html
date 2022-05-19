@@ -20,38 +20,21 @@
         <button id="start-btn">Start Quiz</button>
 
     </section>
-    <section id="QAScreen" style="display:none;">
+    <section id="QAScreen" class="hide">
         <h1 id = "q1"> Question display here </h1>
-        <button id = "01">Option One</button>
-        <button id = "02">Option Two</button>
+        <!-- <button id = "01">Option One</button>
+        <button id = "02">Option Two</button> -->
+        <div id="choices"></div>
         <hr />
         <span id = "RW"></span>
     </section>
-    <!-- <section id="QAScreen" style="display:none;">
-        <h1 id = "q3"> Question display here </h1>
-        <button id = "abc">Option One</button>
-        <button id = "bca">Option Two</button>
-        <button id = "cab">Option Three</button>
-        <hr />
-        <span id = "a"></span>
-    </section> -->
-
-    <!-- <section id="scores" style="display:none;">
-        <h1> Game Over!! </h1>
-
-       <input placeholder="Please enter initials" /> 
-        <button>Submit Score</button>
-    </section>
-    <section id="high-scores">
-      <h1>high scores</h1>
-      <ol id="high-scores"></ol>
-  </section> -->
+ 
 
   <section id="score" class="hide">
     <h1>congratuation on finishing the quiz! your score is <span id="score"></span>! Add you initials to save your score!</h1>
-    <form>
-        <input type="text" placeholder="initials!">
-        <button>Add Scorescore!</button>
+    <form id="initials">
+        <input type="text" placeholder="initials!" id="initialInput">
+        <button type="submit" >Add Scorescore!</button>
     </form>
 </section>
     <!-- high score board -->
